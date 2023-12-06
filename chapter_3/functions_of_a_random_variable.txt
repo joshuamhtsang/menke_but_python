@@ -1,0 +1,24 @@
+
+Q) Derive the distribution of the kinetic energy of a car after acclerating for 100m
+
+An experiment is devised to measure the velocity of a car after accelerating for 100m from 
+stationary. A speed camera is setup at the end of a 100m stretch of road.  After many 
+repeats of the experiment, it is observed that the velocity of the car is uniformly distributed
+in the range of velocities [v_min, v_max] = [55, 65] ( units: ms^(-1) ).
+
+How is the kinetic energy of the car distributed if kinetic energy, E_ke,  is related to 
+velocity through the relationship:
+
+E_ke(v) = 1/2 * m * v^2
+
+A) In this case, the measurable, random variable is v by the speed camera.  The function of 
+the random variable is kinetic energy, E(v):
+
+E(v) = C * v^2
+
+where C = 1/2 * m and is a constant in this experiment.  The experiment found that the probability
+distribution function, p(v), is uniformly distributed, that is:
+
+p(v) = C * v*2
+
+
