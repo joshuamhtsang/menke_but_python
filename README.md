@@ -14,10 +14,11 @@ The guide also shwos you how to use Venv Virtual Environments.  Once Venv is set
 
 $ source <path_to_activate>
 
-and you can use 'pip install' as usual, for example:
+You can use 'pip install' as usual, for example:
 
 $ pip install numpy
 
+and of course it will install into the Venv environment.
 
 # Setup: github, git, ssh git clone
 
