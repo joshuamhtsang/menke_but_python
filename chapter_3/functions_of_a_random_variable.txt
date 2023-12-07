@@ -1,5 +1,5 @@
 
-Q) Derive the distribution of the kinetic energy of a car after acclerating for 100m
+Q) Derive the distribution of the kinetic energy of a car after accelerating for 100m
 
 An experiment is devised to measure the velocity of a car after accelerating for 100m from 
 stationary. A speed camera is setup at the end of a 100m stretch of road.  After many 
@@ -17,8 +17,30 @@ the random variable is kinetic energy, E(v):
 E(v) = C * v^2
 
 where C = 1/2 * m and is a constant in this experiment.  The experiment found that the probability
-distribution function, p(v), is uniformly distributed, that is:
+distribution function, p(v), is uniformly distributed, that is [wolfram](https://mathworld.wolfram.com/UniformDistribution.html):
 
-p(v) = C * v*2
+p(v) = 1 / (v_max - v_min)
 
+i.e it is a rectangular/flat distribution.  Note that p(v) must satify normalization i.e the integral
+over the entire random variable space should equal 1:
 
+/int_{v_min}^{v_max} p(v) dv = 1
+
+The probability density function (pdf), p(E), is given by equation (3.8):
+
+p(E) = p[v(E)] * |\frac{dv}{dE}|
+
+given the known pdf of v, p(v), together with the relationship E(v).  Note how we must inverse E(v)
+to get v(E), then differentiate. First, v(E) is:
+
+v(E) = (E/C)^(1/2)
+
+the derivative can be evaluated:
+
+\frac{dv}{dE} = 1/(2C) * (E/C)^(-1/2)
+
+and thus the pdf p(E) is:
+
+p(E) = 1 / ( v_max - v_min ) * 1/(2C) * (E/C)^(-1/2)
+
+The pdf p(E) can be plotted by script blah.py.
