@@ -18,7 +18,10 @@ You can use 'pip install' as usual, for example:
 
 $ pip install numpy
 
-and of course it will install into the Venv environment.
+and of course it will install into the Venv environment.  Alternatively, you the 
+'requirements.txt' file included in this repository:
+
+$ pip install -r requirements.txt
 
 # Setup: github, git, ssh git clone
 
