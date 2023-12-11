@@ -11,16 +11,38 @@ def normal_distribution(x, mean, sigma):
     return 1.0/((np.sqrt(2.0*np.pi)*sigma))*np.exp(-np.power(x-mean,2)/(2*sigma*sigma))
 
 # Can cumulative sum be done with recursion and memoization?  It's so close to the Fibonnaci sequence thing.
-def cum_sum_of_nth_element(p_in, n):
+def cum_sum_of_nth_element(p, n):
     if n == 0:
-        return p_in[n]
+        return p[n]
     else:
-        return p_in[n-1] + p_in[n]
+        return p[n-1] + p[n]
 
-def cum_sum(p_in):
-    for i in range(0, len(p_in)):
-        p_in[i] = cum_sum_of_nth_element(p_in, i)
-    return p_in
+def cum_sum(p):
+    for i in range(0, len(p)):
+        p[i] = cum_sum_of_nth_element(p, i)
+    return p
+
+def median(p, d, delta_d, N):
+    # Integrate area under the pdf p
+    p_slice_areas = p*delta_d
+    print(p_slice_areas)
+
+    p_cum_area = cum_sum(p_slice_areas)
+    print(p_cum_area)
+
+    plt.plot(d,p_cum_area, '-o')
+    plt.title('Cumulative sum of slice areas')
+    plt.show()
+
+    # The median is the value of d where 50% of the 
+    # probability lies above it and 50% below it.
+    for i in range(0, N):
+        if p_cum_area[i] > 0.5:
+            d_median = i*delta_d
+            break
+    
+    return d_median
+
 
 if __name__ == '__main__':
     print("Compute median of a probability distribution, p(d)")
@@ -42,24 +64,4 @@ if __name__ == '__main__':
     plt.title('Normalised probability density function')
     plt.show()
 
-    # Integrate area under the pdf p
-    p_slice_areas = p*delta_d
-    print(p_slice_areas)
-
-    p_cum_area = cum_sum(p_slice_areas)
-    print(p_cum_area)
-
-    plt.plot(d,p_cum_area, '-o')
-    plt.title('Cumulative sum of slice areas')
-    plt.show()
-
-    # The median is the value of d where 50% of the 
-    # probability lies above it and 50% below it.
-    for i in range(0, N):
-        if p_cum_area[i] > 0.5:
-            d_median = i*delta_d
-            break
-    
-    print("The median is d_median = ", d_median)
-
-
+    print("The median d_median is: ", median(p, d, delta_d, N))
