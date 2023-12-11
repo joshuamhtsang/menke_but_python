@@ -42,7 +42,27 @@ if __name__ == '__main__':
     print(p)
 
     plt.plot(d, p, '-o')
+    plt.title('Normalised probability density function')
     plt.show()
 
-    v1 = np.array([1,2,2,3,3])
-    print(cum_sum(v1))
+    # Integrate area under the pdf p
+    p_slice_areas = p*delta_d
+    print(p_slice_areas)
+
+    p_cum_area = cum_sum(p_slice_areas)
+    print(p_cum_area)
+
+    plt.plot(d,p_cum_area, '-o')
+    plt.title('Cumulative sum of slice areas')
+    plt.show()
+
+    # The median is the value of d where 50% of the 
+    # probability lies above it and 50% below it.
+    for i in range(0, N):
+        if p_cum_area[i] > 0.5:
+            d_median = i*delta_d
+            break
+    
+    print("The median is d_median = ", d_median)
+
+
