@@ -22,9 +22,6 @@ def cum_sum(p_in):
         p_in[i] = cum_sum_of_nth_element(p_in, i)
     return p_in
 
-def compute_median(d_in, p_in):
-    return 0
-
 if __name__ == '__main__':
     print("Compute median of a probability distribution, p(d)")
 
