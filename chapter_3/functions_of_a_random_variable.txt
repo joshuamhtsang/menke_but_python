@@ -43,4 +43,8 @@ and thus the pdf p(E) is:
 
 p(E) = 1 / ( v_max - v_min ) * 1/(2C) * (E/C)^(-1/2)
 
-The pdf p(E) can be plotted by script blah.py.
+It makes sense that p(E) decays with increasing E, since an 
+initially uniform sampling in v space is mapped to increasingly 
+sparse points in E-space due to E = C * v^2 relationship.
+
+The pdf p(E) can be plotted by script <blah.py>.
