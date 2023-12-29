@@ -11,7 +11,7 @@ def compute_mean(p, d):
 
     # Deduce delta_d
     try:
-        delta_d = d[1] - d[0]
+        delta_d = np.abs(d[1] - d[0])
     except IndexError:
         print("Unable to deduce delta_d due to index out of bounds.")
     

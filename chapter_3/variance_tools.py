@@ -30,9 +30,9 @@ def compute_variance(p, d):
 
 if __name__ == '__main__':
     print("Compute variance of a probability distribution, p(d)")
-    N = 1100
-    d_min = -20.0
-    d_max = 20.0
+    N = 100000
+    d_min = -30.0
+    d_max = 30.0
     delta_d = (d_max - d_min) / N
     d = np.linspace(d_min, d_max, N)
     
@@ -49,3 +49,15 @@ if __name__ == '__main__':
 
     print("The variance d_variance is: ", compute_variance(p, d))
     print("The sigma is square root of the variance: ", math.sqrt(compute_variance(p, d)))
+
+    # Attempt to compute variance with:
+    # Var(d) = E[d^2] - E^2[d]
+    d_squared = d**2
+    print(d_squared)
+    plt.plot(d_squared, p, '-o')
+    plt.title('Normalised probability density function')
+    plt.show()
+
+    # Compute mean of d^2
+    d_mean = mean_tools.compute_mean(p, d_squared)
+    print(d_mean)
