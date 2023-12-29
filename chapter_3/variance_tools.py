@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import normal_distribution
 import mean_tools
+import math
 
 def compute_variance(p, d):
     # Ensure p and d arrays are the same length, deduce array lengths
@@ -47,3 +48,4 @@ if __name__ == '__main__':
     plt.show()
 
     print("The variance d_variance is: ", compute_variance(p, d))
+    print("The sigma is square root of the variance: ", math.sqrt(compute_variance(p, d)))
