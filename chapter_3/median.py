@@ -1,14 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import normal_distribution
 """
 Compute the median of a probability distribution, p(d).  Where:
  - d is an array of equally-spaced coordinates in d-space
  - p is an array containing the values of p(d) at the corresponding
    coordinates in d
 """
-
-def normal_distribution(x, mean, sigma):
-    return 1.0/((np.sqrt(2.0*np.pi)*sigma))*np.exp(-np.power(x-mean,2)/(2*sigma*sigma))
 
 # Can cumulative sum be done with recursion and memoization?  It's so close to the Fibonnaci sequence thing.
 def cum_sum_of_nth_element(p, n):
@@ -22,7 +20,19 @@ def cum_sum(p):
         p[i] = cum_sum_of_nth_element(p, i)
     return p
 
-def median(p, d, delta_d, N):
+def compute_median(p, d):
+    # Ensure p and d arrays are the same length, deduce array lengths
+    if len(p) == len(d):
+        N = len(p)
+    else:
+        raise  Exception("The input arrays p and d should have the same length.")
+
+    # Deduce delta_d
+    try:
+        delta_d = d[1] - d[0]
+    except IndexError:
+        print("Unable to deduce delta_d due to index out of bounds.")
+
     # Integrate area under the pdf p
     p_slice_areas = p*delta_d
     print(p_slice_areas)
@@ -35,7 +45,7 @@ def median(p, d, delta_d, N):
     plt.show()
 
     # The median is the value of d where 50% of the 
-    # probability lies above it and 50% below it.
+    # probability lies above it and 50% below it
     for i in range(0, N):
         if p_cum_area[i] > 0.5:
             d_median = i*delta_d
@@ -55,7 +65,7 @@ if __name__ == '__main__':
     
     mean = 5.0
     sigma = 2.0
-    p = normal_distribution(d, mean, sigma)
+    p = normal_distribution.normal_distribution(d, mean, sigma)
 
     print(d)
     print(p)
@@ -64,4 +74,4 @@ if __name__ == '__main__':
     plt.title('Normalised probability density function')
     plt.show()
 
-    print("The median d_median is: ", median(p, d, delta_d, N))
+    print("The median d_median is: ", compute_median(p, d))
